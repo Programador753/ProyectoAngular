@@ -1,7 +1,7 @@
 <table>
     <thead>
         <tr>
-            <th>Alumno</th>
+            <th [attr.colspan]="columnas">Alumno</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +17,7 @@
             <td>Dirección:</td>
             <td>{{ direccion }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="visibles">
             <td>Edad:</td>
             <td>{{ edad }}</td>
         </tr>

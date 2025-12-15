@@ -11,4 +11,6 @@ export class UnalumnoComponent {
   apellidos: string = 'Delgado';
   direccion: string = 'Segovia Capital';
   edad: number = 60;
+  columnas: number = 2;
+  visibles: boolean = true;
 }
