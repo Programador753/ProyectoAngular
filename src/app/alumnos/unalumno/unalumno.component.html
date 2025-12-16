@@ -13,7 +13,7 @@
             <td>Apellidos:</td>
             <td>{{ apellidos }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="visibles">
             <td>Dirección:</td>
             <td>{{ direccion }}</td>
         </tr>
@@ -23,3 +23,7 @@
         </tr>
     </tbody>
 </table>
+<br>
+<button (click)="alternarVisibilidad()">
+    {{ visibles ? 'Ocultar detalles' : 'Mostrar detalles' }}
+</button>
