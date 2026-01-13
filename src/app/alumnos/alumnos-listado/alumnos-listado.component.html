@@ -12,8 +12,8 @@
     <tbody>
         <ng-container *ngFor="let alumno of alumnos">
             <tr *ngIf="opcionSeleccionada=='todos' || opcionSeleccionada==alumno.sexo ">
-                <td>{{ alumno.nombre | uppercase | alumnoTitulo:alumno.sexo}} {{ alumno.apellidos | uppercase}}</td>
-                <td>{{ alumno.direccion }}</td>
+                <td>{{ alumno.nombre | uppercase | alumnoTitulo:alumno.sexo}}</td>
+                <td>{{ alumno.foto}}</td>
                 <td>{{ alumno.fnac | date: 'dd/MM/yyyy' }}</td>
                 <td>{{ alumno.sexo }}</td>
             </tr>

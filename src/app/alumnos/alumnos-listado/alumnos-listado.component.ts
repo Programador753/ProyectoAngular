@@ -19,7 +19,10 @@ export class AlumnosListadoComponent implements OnInit {
   constructor(private losAlumnos: AlumnosService) {}
   
   ngOnInit(): void {
-    this.alumnos = this.losAlumnos.getAlumnos();
+
+    this.losAlumnos.getAlumnos().subscribe((data: Alumno[]) => {
+      this.alumnos = data;
+    });
   }
 
   alCambiarOpcion(opcion: string): void {
