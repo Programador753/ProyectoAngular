@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Alumno } from './Alumno';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
@@ -17,5 +17,10 @@ export class AlumnosService {
 
   getAlumnoById(id: number): Observable<Alumno> {
     return this.http.get<Alumno>(`${this.apiUrl}/${id}`);
+  }
+
+  addAlumno(alumno: Alumno): Observable<Alumno> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<Alumno>(this.apiUrl, alumno, { headers });
   }
 }

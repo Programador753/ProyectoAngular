@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UnalumnoComponent } from './alumnos/unalumno/unalumno.component';
 import { AlumnosListadoComponent } from './alumnos/alumnos-listado/alumnos-listado.component';
+import { AlumnoFormularioComponent } from './alumnos/alumno-formulario/alumno-formulario.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, UnalumnoComponent, AlumnosListadoComponent],
+  imports: [RouterOutlet, UnalumnoComponent, AlumnosListadoComponent, AlumnoFormularioComponent],
   template: `
   <div align="center">
     <h1>{{ encabezado }}</h1>
     <h2>{{ getNomreCompleto() }}</h2>
     <img src="https://upload.wikimedia.org/wikipedia/en/6/69/{{imagen}}" alt="Logo Colegio Salesianos">
     <app-unalumno></app-unalumno>
+    <app-alumno-formulario></app-alumno-formulario>
     <app-alumnos-listado></app-alumnos-listado>
   </div>
   `,
