@@ -23,4 +23,9 @@ export class AlumnosService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<Alumno>(this.apiUrl, alumno, { headers });
   }
+
+  deleteAlumno(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
 }

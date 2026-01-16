@@ -7,6 +7,8 @@
             <th>Dirección</th>
             <th>Fecha de Nacimiento</th>
             <th>Sexo</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +18,8 @@
                 <td>{{ alumno.foto}}</td>
                 <td>{{ alumno.fnac | date: 'dd/MM/yyyy' }}</td>
                 <td>{{ alumno.sexo }}</td>
+                <td><app-boton iconClasses="fa-solid fa-edit" buttonClasses="btn-warning">Editar</app-boton></td>
+                <td><app-boton iconClasses="fa-solid fa-trash" buttonClasses="btn-danger" (click)="eliminarAlumno(alumno.id)">Eliminar</app-boton></td>
             </tr>
             <tr *ngIf="!alumnos || alumnos.length == 0">
                 <td colspan="4" align="center">No hay alumnos disponibles</td>
