@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { UnalumnoComponent } from './alumnos/unalumno/unalumno.component';
-import { AlumnosListadoComponent } from './alumnos/alumnos-listado/alumnos-listado.component';
-import { AlumnoFormularioComponent } from './alumnos/alumno-formulario/alumno-formulario.component';
+import { MenuComponent } from './elementos/menu/menu.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, UnalumnoComponent, AlumnosListadoComponent, AlumnoFormularioComponent],
+  imports: [RouterOutlet, MenuComponent],
   template: `
-  <div align="center">
-    <h1>{{ encabezado }}</h1>
-    <h2>{{ getNomreCompleto() }}</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/en/6/69/{{imagen}}" alt="Logo Colegio Salesianos">
-    <app-unalumno></app-unalumno>
-    <app-alumno-formulario></app-alumno-formulario>
-    <app-alumnos-listado></app-alumnos-listado>
-  </div>
+    <app-menu
+    [title]="'Salesianos'"
+    [menuItems]="[
+      {label: 'Inicio', link: '/', icono: 'fa fa-home'},
+      {label: 'Alumno', link: '/alumno', icono: 'fa fa-user'},
+      {label: 'Listado', link: '/alumno-lista', icono: 'fa fa-film'},
+      {label: 'Insertar', link: '/alumno-insertar', icono: 'fa fa-pen'} 
+    ]">
+    </app-menu>
+    <div class="container mt-4">
+      <router-outlet></router-outlet>
+    </div>
   `,
   styleUrl: './app.component.css'
 })

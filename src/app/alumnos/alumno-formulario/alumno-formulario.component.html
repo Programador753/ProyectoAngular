@@ -1,5 +1,5 @@
 <div class="container">
-    <h4 align="center">Añadir Alumno</h4>
+    <h4 align="center">{{ editar ? 'Editar Alumno' : 'Añadir Alumno' }}</h4>
     <form (ngSubmit)="onSubmit()">
         <div class="form-group mb-1">
             <label for="nombre" class="form-label">Nombre:</label>
@@ -21,6 +21,6 @@
             <label for="sexo" class="form-label">Sexo:</label>
             <input type="text" id="sexo" name="sexo" class="form-control" required [(ngModel)]="alumno.sexo">
         </div>
-        <button type="submit" class="btn btn-primary btn-sm w-100">Guardar</button>
+        <button type="submit" class="btn btn-primary btn-sm w-100">{{ editar ? 'Actualizar' : 'Guardar' }}</button>
     </form>
 </div>

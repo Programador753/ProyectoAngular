@@ -5,16 +5,17 @@ import { AlumnosCountComponent } from '../alumnos-count/alumnos-count.component'
 import { Alumno } from '../Alumno';
 import { AlumnosService } from '../alumnos.service';
 import { BotonComponent } from '../../elementos/boton/boton.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-alumnos-listado',
-  imports: [CommonModule, AlumnoTituloPipe, AlumnosCountComponent, BotonComponent],
+  imports: [CommonModule, AlumnoTituloPipe, AlumnosCountComponent, BotonComponent, RouterLink],
   templateUrl: './alumnos-listado.component.html',
   styleUrl: './alumnos-listado.component.css',
   providers: [AlumnosService]
 })
 export class AlumnosListadoComponent implements OnInit {
-  opcionSeleccionada: string = 'Todos';
+  opcionSeleccionada: string = 'todos';
   alumnos: Alumno[] = []
   
   constructor(private losAlumnos: AlumnosService) {}
@@ -49,5 +50,6 @@ export class AlumnosListadoComponent implements OnInit {
     });
     }
   }
+
 
 }
