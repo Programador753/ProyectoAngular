@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from './elementos/menu/menu.component';
+import { SelectorComponent } from './elementos/selector/selector.component';
+import { AlumnosService } from './alumnos/alumnos.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MenuComponent],
+  imports: [RouterOutlet, MenuComponent, SelectorComponent],
   template: `
+  <div  class="container mt-5">
+  <app-selector
+    label="Alumnos: "
+    [options]="Alumnos">
+  </app-selector>
+  </div>
     <app-menu
     [title]="'Salesianos'"
     [menuItems]="[
@@ -29,5 +37,19 @@ export class AppComponent {
 
   getNomreCompleto(): string {
     return this.nombre + " " + this.ciudad;
+  }
+
+  Alumnos: any[] = []
+  // Metodo para cargar los alumnos desde el observable del servicio
+  cargarAlumnos(): void {
+    this.alumnosService.getAlumnos().subscribe(data => {
+      this.Alumnos = data.map(alumno => ({
+        value: alumno.id,
+        text: `${alumno.nombre}`
+      }));
+    });
+  }
+  constructor(private alumnosService: AlumnosService) {
+    this.cargarAlumnos();
   }
 }
