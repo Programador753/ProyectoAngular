@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from './elementos/menu/menu.component';
 import { SelectorComponent } from './elementos/selector/selector.component';
 import { AlumnosService } from './alumnos/alumnos.service';
+import { Alumno } from './alumnos/Alumno';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,10 @@ import { AlumnosService } from './alumnos/alumnos.service';
   <div  class="container mt-5">
   <app-selector
     label="Alumnos: "
-    [options]="Alumnos">
-  </app-selector>
+    [options]="alumnos"
+    (selectedValueChange)="onAlumnoChange($event)">
+    ></app-selector>
+  <p class="mt-3">Alumno seleccionado: {{selectedAlumno}}</p>
   </div>
     <app-menu
     [title]="'Salesianos'"
@@ -29,27 +32,32 @@ import { AlumnosService } from './alumnos/alumnos.service';
   `,
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   encabezado: string = 'DATOS COLEGIO';
   nombre: string = 'Salesianos';
   ciudad: string = 'Zaragoza';
   imagen: string = 'Real_Zaragoza_logo.svg';
+  selectedAlumno: number = 0;
 
   getNomreCompleto(): string {
     return this.nombre + " " + this.ciudad;
   }
 
-  Alumnos: any[] = []
-  // Metodo para cargar los alumnos desde el observable del servicio
-  cargarAlumnos(): void {
-    this.alumnosService.getAlumnos().subscribe(data => {
-      this.Alumnos = data.map(alumno => ({
+  alumnos: { value: number; text: string }[] = [];
+  
+  constructor(private alumnosService: AlumnosService) {
+  }
+
+  ngOnInit(): void {
+    this.alumnosService.getAlumnos().subscribe((data: Alumno[]) => {
+      this.alumnos = data.map((alumno => ({
         value: alumno.id,
-        text: `${alumno.nombre}`
-      }));
+        text: alumno.nombre
+      })));
     });
   }
-  constructor(private alumnosService: AlumnosService) {
-    this.cargarAlumnos();
+
+  onAlumnoChange(opcionElegida: number): void {
+    this.selectedAlumno = opcionElegida;
   }
 }
