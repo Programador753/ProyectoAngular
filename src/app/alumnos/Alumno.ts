@@ -7,6 +7,7 @@ export class Alumno {
     public cursoID: number,
     public fnac: string,
     public sexo: string,
-    public nom_padre?: string
+    public nom_padre?: string,
+    public pais?: string
   ) {}
 }

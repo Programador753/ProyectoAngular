@@ -29,4 +29,8 @@ export class AlumnosService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+  getAlumnosByPais(paisID: number): Observable<Alumno[]> {
+    return this.http.get<Alumno[]>(`${this.apiUrl}/pais/${paisID}`).pipe(map(data => data ));
+  }
+
 }
