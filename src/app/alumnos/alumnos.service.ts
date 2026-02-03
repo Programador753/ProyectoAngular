@@ -9,7 +9,7 @@ import { map, Observable } from 'rxjs';
 export class AlumnosService {
   // Usa HTTPS ahora que el servidor está corriendo
   private apiUrl = 'https://localhost:7244/api/alumno';
-  private apiUrlByPais = 'https://localhost:7244/api/Alumno/porPais/';
+  private apiUrlByPais = 'https://localhost:7244/api/Alumno/porPais';
 
   constructor(private http: HttpClient) { }
 
