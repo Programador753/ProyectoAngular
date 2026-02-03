@@ -8,6 +8,7 @@ export class Alumno {
     public fnac: string,
     public sexo: string,
     public nom_padre?: string,
-    public pais?: string
+    public pais?: string,
+    public paisID?: number
   ) {}
 }

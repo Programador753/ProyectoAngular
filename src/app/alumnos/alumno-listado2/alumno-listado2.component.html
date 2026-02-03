@@ -1,9 +1,12 @@
-<div class="filtro-container">
-    <label for="paisSelect">País: </label>
-    <select id="paisSelect" (change)="alCambiarOpcion($any($event.target).value)">
-        <option value="todos">Todos</option>
-        <option *ngFor="let pais of paises" [value]="pais.nomPais">{{ pais.nomPais }}</option>
-    </select>
+<div class="container mt-5">
+    <h2>Listado de Alumnos</h2>
+    
+    <app-selector 
+        [options]="opcionesSelector" 
+        label="Filtrar por país:" 
+        [defaultOption]="opcionSeleccionada"
+        (selectedValueChange)="onFiltroChange($event)">
+    </app-selector>
 </div>
 
 <table>
@@ -20,24 +23,29 @@
     </thead>
     <tbody>
         <ng-container *ngFor="let alumno of alumnos">
-            <tr *ngIf="opcionSeleccionada=='todos' || opcionSeleccionada==getNombrePais(alumno.paisID)">
+            <tr>
                 <td>{{ alumno.nombre | uppercase | alumnoTitulo:alumno.sexo}}</td>
                 <td>{{ alumno.foto}}</td>
                 <td>{{ alumno.fnac | date: 'dd/MM/yyyy' }}</td>
                 <td>{{ alumno.sexo }}</td>
-                <td>{{ getNombrePais(alumno.paisID) }}</td>
-                <td><app-boton 
-                    iconClasses="fa-solid fa-edit" 
-                    buttonClasses="btn-warning" 
-                    [routerLink]="['/alumno-insertar', alumno.id]">Editar
-                </app-boton></td>
-                <td><app-boton 
-                    iconClasses="fa-solid fa-trash" 
-                    buttonClasses="btn-danger" 
-                    (click)="eliminarAlumno(alumno.id)">Eliminar
-                </app-boton></td>
+                <td>{{ getNombrePais(alumno.paisID ?? 0) }}</td>
+                <td>
+                    <app-boton 
+                        iconClasses="fa-solid fa-edit" 
+                        buttonClasses="btn-warning" 
+                        [routerLink]="['/alumno-insertar', alumno.id]">Editar
+                    </app-boton>
+                </td>
+                <td>
+                    <app-boton 
+                        iconClasses="fa-solid fa-trash" 
+                        buttonClasses="btn-danger" 
+                        (click)="eliminarAlumno(alumno.id)">Eliminar
+                    </app-boton>
+                </td>
             </tr>
         </ng-container>
+        
         <tr *ngIf="!alumnos || alumnos.length == 0">
             <td colspan="7" align="center">No hay alumnos disponibles</td>
         </tr>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Alumno }from '../alumnos/Alumno';
-import { Pais } from './Pais';
+import { Pais } from './pais';
 
 @Injectable({
   providedIn: 'root'
