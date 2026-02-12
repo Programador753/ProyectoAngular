@@ -24,7 +24,8 @@ import { Alumno } from './alumnos/Alumno';
       {label: 'Alumno', link: '/alumno', icono: 'fa fa-user'},
       {label: 'Listado', link: '/alumno-lista', icono: 'fa fa-film'},
       {label: 'Listado2', link: '/alumno-listado2', icono: 'fa fa-film'},
-      {label: 'Insertar', link: '/alumno-insertar', icono: 'fa fa-pen'} 
+      {label: 'Insertar', link: '/alumno-insertar', icono: 'fa fa-pen'},
+      {label: 'Calificaciones', link: '/calificaciones', icono: 'fa fa-graduation-cap'}
     ]">
     </app-menu>
     <div class="container mt-4">
