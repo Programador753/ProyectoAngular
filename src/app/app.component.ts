@@ -4,7 +4,6 @@ import { MenuComponent } from './elementos/menu/menu.component';
 import { SelectorComponent } from './elementos/selector/selector.component';
 import { AlumnosService } from './alumnos/alumnos.service';
 import { Alumno } from './alumnos/Alumno';
-import { GraphicoComponent } from './elementos/graphico/graphico.component';
 import { GraficoCircularComponent } from './elementos/grafico-circular/grafico-circular.component';
 
 @Component({
